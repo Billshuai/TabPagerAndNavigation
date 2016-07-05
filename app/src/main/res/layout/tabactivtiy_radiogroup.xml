@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+1、写选型卡页面特殊的布局文件：
+根节点必须是TabHost，属性android:id="@android:id/tabhost" 是固定值；
+必须有子节点TabWidget，必须有属性android:id="@android:id/tabs"；
+必须有一个FrameLayout布局节点，属性必须是android:id="@android:id/tabcontent"。
+2、继承TabActivity：（以前学习的过程中都是继承android.app.Activity类，但是这里需要继承android.app.TabActivity）
+3、创建TabHost对象：通过getTabHost()方法来实现。
+4、分别创建TabSpec对象：
+通过TabHost对象的newTabSpec()方法创建TabSpec对象；
+通过setIndicator()设置标签和图标；
+通过setContent()设置内容。
+5、TabHost对象添加TabSpec对象。通过TabHost对象的addTab()方法实现添加选项卡。
+-->
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@android:id/tabhost"
+
+    android:layout_width="fill_parent"
+
+    android:layout_height="fill_parent">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0" />
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:visibility="gone" />
+
+        <RadioGroup
+            android:id="@+id/main_radio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:background="#FCFCFC"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/mainTabs_radio_play"
+                style="@style/mainTabs_radio"
+                android:button="@null"
+                android:drawableTop="@drawable/navigation_btn"
+                android:text="首页"
+                android:checked="true"
+                android:textColor="@drawable/tabhost_text_color" />
+
+            <RadioButton
+                android:id="@+id/mainTabs_radio_light"
+                style="@style/mainTabs_radio"
+                android:button="@null"
+                android:drawableTop="@drawable/navigation_btn"
+                android:text="娱乐"
+                android:textColor="@drawable/tabhost_text_color" />
+
+            <RadioButton
+                android:id="@+id/mainTabs_radio_me"
+                style="@style/mainTabs_radio"
+                android:button="@null"
+                android:drawableTop="@drawable/navigation_btn"
+                android:text="个人"
+                android:textColor="@drawable/tabhost_text_color" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+</TabHost>
